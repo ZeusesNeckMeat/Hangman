@@ -29,12 +29,13 @@ namespace Hangman
 
         //Determine whether or not the user is out of guesses
         //This will be used outside of this class
-        public bool IsUserOutOfGuesses => _maxNumberOfFailedGuesses > _currentNumberOfFailedGuesses;
+        public bool IsUserOutOfGuesses => 
 
         //Determine whether or not the user won the game
-        public bool DidUserWin => string.Equals(_wordToGuess, _currentStateOfWord, StringComparison.OrdinalIgnoreCase);
+        public bool DidUserWin => 
 
         public string CurrentStateOfWord => _currentStateOfWord;
+
         public void GetNextGuess()
         {
             var letterGuessed = GetUserGuessedLetter();
@@ -51,17 +52,7 @@ namespace Hangman
         // - Once the user has entered a valid letter record that the letter has been guessed and return said letter from the method
         private char GetUserGuessedLetter()
         {
-            Console.Write("Enter a letter not already guessed: ");
-            var letterGuessed = Console.ReadKey().KeyChar;
-
-            if (!char.IsLetter(letterGuessed) || _lettersGuessed.Contains(letterGuessed))
-            {
-                ClearCurrentConsoleLine();
-                return GetUserGuessedLetter();
-            }
-
-            _lettersGuessed.Add(letterGuessed);
-            return letterGuessed;
+            
         }
 
         public static void ClearCurrentConsoleLine()
@@ -76,14 +67,7 @@ namespace Hangman
         //If not in the word then add that letter to the list of letters not in the word and record the failed guess
         private bool IsLetterInWord(char letter)
         {
-            if (!_wordToGuess.Contains(letter, StringComparison.OrdinalIgnoreCase))
-            {
-                _currentNumberOfFailedGuesses++;
-                _lettersNotInWord.Add(letter);
-                return false;
-            }
-
-            return true;
+            
         }
 
         //This is quite a bit more complicated, but could always attempt if interested
