@@ -29,13 +29,12 @@ namespace Hangman
 
         //Determine whether or not the user is out of guesses
         //This will be used outside of this class
-        public bool IsUserOutOfGuesses => 
+        public bool IsUserOutOfGuesses =>
 
         //Determine whether or not the user won the game
-        public bool DidUserWin => 
+        public bool DidUserWin =>
 
         public string CurrentStateOfWord => _currentStateOfWord;
-
         public void GetNextGuess()
         {
             var letterGuessed = GetUserGuessedLetter();
@@ -43,7 +42,6 @@ namespace Hangman
             if (IsLetterInWord(letterGuessed))
                 UnMaskLetterInWord(letterGuessed);
         }
-
 
         //Fill out the method to do the following
         // - Prompt the user to enter a letter that has not already been guessed
@@ -73,14 +71,7 @@ namespace Hangman
         //This is quite a bit more complicated, but could always attempt if interested
         private void UnMaskLetterInWord(char letterGuessed)
         {
-            var stringBuilder = new StringBuilder(_currentStateOfWord);
-            foreach (var (letter, index) in _wordToGuess.Select((letter, index) => (char.ToUpperInvariant(letter), index)))
-            {
-                if (letter.Equals(char.ToUpperInvariant(letterGuessed)))
-                    stringBuilder[index] = letterGuessed;
-            }
-
-            _currentStateOfWord = stringBuilder.ToString();
+            
         }
     }
 }

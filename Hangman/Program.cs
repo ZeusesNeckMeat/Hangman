@@ -29,7 +29,7 @@ namespace Hangman
                     clearConsoleAndDisplayStuff();
                     userGuess.GetNextGuess();
                 }
-                while (!userGuess.IsUserOutOfGuesses || !userGuess.DidUserWin);
+                while (!userGuess.IsUserOutOfGuesses && !userGuess.DidUserWin);
 
                 DisplayWord.DisplayFinalMessage(userGuess.DidUserWin, newRandomWord, clearConsoleAndDisplayStuff);
 
